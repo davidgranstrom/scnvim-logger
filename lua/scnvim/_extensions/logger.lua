@@ -29,5 +29,12 @@ return require'scnvim'.register_extension {
   exports = {
     start = logger.start,
     stop = logger.stop,
-  }
+  },
+
+  --- Health checks
+  --- This function will be executed by :checkhealth scnvim
+  health = function()
+    local health = require 'health'
+    health.report_ok 'all is good'
+  end,
 }

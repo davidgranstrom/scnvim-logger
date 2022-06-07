@@ -21,10 +21,11 @@ return require'scnvim'.register_extension {
   --- This is the public API of this plugin. Try not to break it :)
   ---
   --- The exported functions will be accessible from `SCNvimExt <name>.<command> <args>`
-  --- Example: :SCnvimExt logger.start
-  --- Example: :SCnvimExt logger.start w+ /tmp/log.txt
+  --- Example: :SCNvimExt logger.start
+  --- Example: :SCNvimExt logger.start w+ /tmp/log.txt
   ---
-  --- Note: args will be quoted by default, so no need to wrap them in ""
+  --- NOTE: Arguments will be passed as strings (see :help <f-args>)
+  --- Use `tonumber()` in the receiving function to convert arguments if needed.
   exports = {
     start = logger.start,
     stop = logger.stop,

@@ -74,19 +74,31 @@ To make the extension a compatible scnvim extension the directory layout should 
 
 ```
 .
-├── README.md                 # Instructions for your extension
-└── lua
-    └── scnvim
-        └── _extensions       # (note the underscore!)
-            ├── logger        # Business logic goes here, can be split into more files.
-            │   └── main.lua
-            └── logger.lua    # Name of the extension
-
+├── README.md                      # Instructions for your extension
+├── lua
+│   └── scnvim
+│       └── _extensions            # Note the underscore!
+│           ├── logger
+│           │   └── main.lua       # Business logic goes here, can be split into more files.
+│           └── logger.lua         # Name of the extension
+└── supercollider                  # This directory will be linked to the users Extensions directory
+    └── scide_scnvim               # Note the `scide_scnvim` subdirectory!
+        └── SCNvimExtLogger.sc     # Define SuperCollider classes here
 ```
 
 The name of the extension in this case is `logger`, and to load the extension a
 user will call `scnvim.load_extension('logger')` after the initial call to
 `scnvim.setup`.
+
+If there is a `supercollider` directory in the root of the plugin its content
+will be automatically linked to the user's Extensions directory under
+`scnvim-extensions/<name>`.
+
+Please give user instructions on how to remove the class link, e.g.
+
+> To uninstall the linked SuperCollider classes that comes with this plugin, delete the symbolic link found in `Extensions/scnvim-extensions/<name>`.
+>
+> The `Extensions` directory can opened from the IDE menu `File -> Open user support directory`
 
 ## Configuration
 
